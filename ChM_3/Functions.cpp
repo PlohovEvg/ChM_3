@@ -24,17 +24,25 @@ double RK4(double x, double vn, double h, DU d)
 	return vn1;
 }
 
-
-int LPControl(double xn, double vn, double vn1, double h, DU d, double Eps)
+double Vn1cap(double xn, double vn, double h, DU d)
 {
-	double S, vn2, xn2,vn1cap;
+	double vn2, xn2, vn1cap;
 
 	vn2 = RK4(xn, vn, h / 2, d);
 	xn2 = xInc(xn, h / 2);
 	vn1cap = RK4(xn2, vn2, h / 2, d);
 
-	S = (vn1cap - vn1) / 15;
+	return vn1cap;
+}
 
+double CS(double _vn1cap, double _vn1)
+{
+	return (_vn1cap - _vn1) / 15;
+}
+
+
+int LPControl(double S, double Eps)
+{	
 	if (abs(S) > Eps)
 	{
 		return -1;
@@ -52,15 +60,12 @@ int LPControl(double xn, double vn, double vn1, double h, DU d, double Eps)
 	}
 }
 
-double Correction(double xn, double vn, double vn1, double h, DU d)
+double Correction( double vn1, double S)
 {
-	double S, vn2, xn2, vn1cap;
-
-	vn2 = RK4(xn, vn, h / 2, d);
-	xn2 = xInc(xn, h / 2);
-	vn1cap = RK4(xn2, vn2, h / 2, d);
-
-	S = (vn1cap - vn1) / 15;
-
 	return vn1 + S * 16;
+}
+
+double fAcc(double I0, DU d,double x)
+{
+	return (I0 + ((d.w*d.L*d.E0) / (pow(d.R, 2) + pow(d.L, 2)*pow(d.w, 2))))*exp(-x*d.R / d.L) + (d.E0*d.R*sin(d.w*x)-d.w*d.L*d.E0*cos(d.w*x)) / (pow(d.R, 2) + pow(d.L, 2)*pow(d.w, 2));
 }

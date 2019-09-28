@@ -1,3 +1,5 @@
-﻿  MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
+﻿  MyForm.cpp
+ChM_3.lib(Functions.obj) : warning LNK4075: эх єўшЄ√трхЄё  "/EDITANDCONTINUE" шч-чр ёяхЎшЇшърЎшш "/OPT:LBR"
+.NETFramework,Version=v4.5.2.AssemblyAttributes.obj : warning LNK4099: "vc140.pdb" PDB эх эрщфхэ ё ".NETFramework,Version=v4.5.2.AssemblyAttributes.obj" шыш эр "C:\Users\╧юы№чютрЄхы№\Documents\Git\ChM_3\x64\Debug\vc140.pdb"; ъюьяюэютър юс·хъЄр т√яюыэ хЄё  ъръ яЁш юЄёєЄёЄтшш юЄырфюўэ√ї фрээ√ї
   WinForm.vcxproj -> C:\Users\Пользователь\Documents\Git\ChM_3\x64\Debug\WinForm.exe
-  WinForm.vcxproj -> C:\Users\Пользователь\Documents\Git\ChM_3\x64\Debug\WinForm.pdb (Partial PDB)
+  WinForm.vcxproj -> C:\Users\Пользователь\Documents\Git\ChM_3\x64\Debug\WinForm.pdb (Full PDB)
