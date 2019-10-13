@@ -16,10 +16,10 @@ double RK4(double x, double vn, double h, DU d)
 	double vn1, k1, k2, k3, k4;
 
 	k1 = f(x, vn, d);
-	k2 = f(x + (h / 4), vn + (h / 4)*k1, d);
-	k3 = f(x + (h / 2), vn + (h / 2)*k2, d);
-	k4 = f(x + h, vn + (h / 2)*(k1 - 2 * k2 + 2 * k3), d);
-	vn1 = vn + (h / 6)*(k1 + 4 * k3 + k4);
+	k2 = f(x + (h / 4.0), vn + (h / 4.0)*k1, d);
+	k3 = f(x + (h / 2.0), vn + (h / 2.0)*k2, d);
+	k4 = f(x + h, vn + (h / 2.0)*(k1 - 2 * k2 + 2 * k3), d);
+	vn1 = vn + (h / 6.0)*(k1 + 4 * k3 + k4);
 
 	return vn1;
 }
@@ -28,16 +28,16 @@ double Vn1cap(double xn, double vn, double h, DU d)
 {
 	double vn2, xn2, vn1cap;
 
-	vn2 = RK4(xn, vn, h / 2, d);
-	xn2 = xInc(xn, h / 2);
-	vn1cap = RK4(xn2, vn2, h / 2, d);
+	vn2 = RK4(xn, vn, h / 2.0, d);
+	xn2 = xInc(xn, h / 2.0);
+	vn1cap = RK4(xn2, vn2, h / 2.0, d);
 
 	return vn1cap;
 }
 
 double CS(double _vn1cap, double _vn1)
 {
-	return (_vn1cap - _vn1) / 15;
+	return (_vn1cap - _vn1) / 15.0;
 }
 
 
@@ -49,7 +49,7 @@ int LPControl(double S, double Eps)
 	}
 	else
 	{
-		if (abs(S) < Eps / 32)
+		if (abs(S) < Eps / 32.0)
 		{
 			return 1;
 		}
