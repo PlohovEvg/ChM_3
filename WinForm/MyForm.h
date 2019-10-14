@@ -323,6 +323,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Вычисления";
 			this->tabPage1->UseVisualStyleBackColor = true;
+			this->tabPage1->Click += gcnew System::EventHandler(this, &MyForm::tabPage1_Click);
 			// 
 			// button16
 			// 
@@ -365,6 +366,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->b_Text->Name = L"b_Text";
 			this->b_Text->Size = System::Drawing::Size(100, 20);
 			this->b_Text->TabIndex = 71;
+			this->b_Text->Text = L"100";
 			// 
 			// label22
 			// 
@@ -572,6 +574,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->L_Text->Name = L"L_Text";
 			this->L_Text->Size = System::Drawing::Size(100, 20);
 			this->L_Text->TabIndex = 55;
+			this->L_Text->Text = L"2,64";
 			// 
 			// R_Text
 			// 
@@ -579,6 +582,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->R_Text->Name = L"R_Text";
 			this->R_Text->Size = System::Drawing::Size(100, 20);
 			this->R_Text->TabIndex = 54;
+			this->R_Text->Text = L"5,7132";
 			// 
 			// Epsilon_Text
 			// 
@@ -586,6 +590,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->Epsilon_Text->Name = L"Epsilon_Text";
 			this->Epsilon_Text->Size = System::Drawing::Size(100, 20);
 			this->Epsilon_Text->TabIndex = 53;
+			this->Epsilon_Text->Text = L"0,001";
 			// 
 			// I0_Text
 			// 
@@ -593,6 +598,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->I0_Text->Name = L"I0_Text";
 			this->I0_Text->Size = System::Drawing::Size(100, 20);
 			this->I0_Text->TabIndex = 52;
+			this->I0_Text->Text = L"10,58";
 			// 
 			// h_Text
 			// 
@@ -600,6 +606,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->h_Text->Name = L"h_Text";
 			this->h_Text->Size = System::Drawing::Size(100, 20);
 			this->h_Text->TabIndex = 51;
+			this->h_Text->Text = L"0,02";
 			// 
 			// n_Text
 			// 
@@ -607,6 +614,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->n_Text->Name = L"n_Text";
 			this->n_Text->Size = System::Drawing::Size(100, 20);
 			this->n_Text->TabIndex = 50;
+			this->n_Text->Text = L"1000";
 			// 
 			// Omega_Text
 			// 
@@ -614,6 +622,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->Omega_Text->Name = L"Omega_Text";
 			this->Omega_Text->Size = System::Drawing::Size(100, 20);
 			this->Omega_Text->TabIndex = 49;
+			this->Omega_Text->Text = L"1,14";
 			// 
 			// E0_Text
 			// 
@@ -621,6 +630,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->E0_Text->Name = L"E0_Text";
 			this->E0_Text->Size = System::Drawing::Size(100, 20);
 			this->E0_Text->TabIndex = 48;
+			this->E0_Text->Text = L"3,8725";
 			// 
 			// label12
 			// 
@@ -1084,114 +1094,114 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 			k = LPControl(S, Epsilon);
 			if (k == -1)
 			{
-			while (k == -1)
-			{
-			h = h*0.5;
-			c1++;
-			vplus1 = RK4(x, v, h, f);
-			vcap = Vn1cap(x, v, h, f);
-			S = CS(vcap, vplus1);
-			k = LPControl(S, Epsilon);
-			}
+				while (k == -1)
+				{
+					h = h*0.5;
+					c1++;
+					vplus1 = RK4(x, v, h, f);
+					vcap = Vn1cap(x, v, h, f);
+					S = CS(vcap, vplus1);
+					k = LPControl(S, Epsilon);
+				}
 			}
 			if (k == 1)
 			{
-			x = xInc(x, h);
+				x = xInc(x, h);
 
-			u = fAcc(I0, f, x);
-			f_list->Add(x, vplus1);
-			g_list->Add(x, u);
+				u = fAcc(I0, f, x);
+				g_list->Add(x, u);
 
-			if (h > maxH)
-			{
-			maxH = h;
-			xmaxH = x;
-			}
-			if (h < minH)
-			{
-			minH = h;
-			xminH = x;
-			}
-			if (abs(S) > maxS)
-			{
-			maxS = abs(S);
-			}
-			if (abs(u - vplus1) > maxSubUiVi)
-			{
-			maxSubUiVi = abs(u - vplus1);
-			xmaxSubUiVi = x;
-			}
-			if ((i < n) || (x <= b))
-			{
-			sub = b - x;
-			}
+				if (h > maxH)
+				{
+					maxH = h;
+					xmaxH = x;
+				}
+				if (h < minH)
+				{
+					minH = h;
+					xminH = x;
+				}
+				if (abs(S) > maxS)
+				{
+					maxS = abs(S);
+				}
+				if (abs(u - vplus1) > maxSubUiVi)
+				{
+					maxSubUiVi = abs(u - vplus1);
+					xmaxSubUiVi = x;
+				}
+				if ((i < n) || (x <= b))
+				{
+					sub = b - x;
+				}
 
-			dataGridView2->Rows->Add();
-			dataGridView2->Rows[i]->Cells[0]->Value = i;
-			dataGridView2->Rows[i]->Cells[1]->Value = x;
-			dataGridView2->Rows[i]->Cells[2]->Value = vplus1;
-			dataGridView2->Rows[i]->Cells[3]->Value = vcap;
-			dataGridView2->Rows[i]->Cells[4]->Value = vplus1 - vcap;
-			dataGridView2->Rows[i]->Cells[5]->Value = S;
-			dataGridView2->Rows[i]->Cells[6]->Value = h;
-			dataGridView2->Rows[i]->Cells[7]->Value = c1;
-			dataGridView2->Rows[i]->Cells[8]->Value = c2;
-			dataGridView2->Rows[i]->Cells[9]->Value = u;
-			dataGridView2->Rows[i]->Cells[10]->Value = abs(u - vplus1);
+				dataGridView2->Rows->Add();
+				dataGridView2->Rows[i]->Cells[0]->Value = i;
+				dataGridView2->Rows[i]->Cells[1]->Value = x;
+				dataGridView2->Rows[i]->Cells[2]->Value = vplus1;
+				dataGridView2->Rows[i]->Cells[3]->Value = vcap;
+				dataGridView2->Rows[i]->Cells[4]->Value = vplus1 - vcap;
+				dataGridView2->Rows[i]->Cells[5]->Value = S;
+				dataGridView2->Rows[i]->Cells[6]->Value = h;
+				dataGridView2->Rows[i]->Cells[7]->Value = c1;
+				dataGridView2->Rows[i]->Cells[8]->Value = c2;
+				dataGridView2->Rows[i]->Cells[9]->Value = u;
+				dataGridView2->Rows[i]->Cells[10]->Value = abs(u - vplus1);
 
-			h = 2 * h;
-			if (i != n - 1)
-			{
-			c2++;
-			}
-			v = Correction(vplus1, S);
+				h = 2 * h;
+				if (i != n - 1)
+				{
+					c2++;
+				}
+				v = Correction(vplus1, S);
+				f_list->Add(x, v);
 			}
 			else
 			{
-			x = xInc(x, h);
+				x = xInc(x, h);
 
-			u = fAcc(I0, f, x);
-			f_list->Add(x, vplus1);
-			g_list->Add(x, u);
+				u = fAcc(I0, f, x);				
+				g_list->Add(x, u);
 
-			if (h > maxH)
-			{
-			maxH = h;
-			xmaxH = x;
-			}
-			if (h < minH)
-			{
-			minH = h;
-			xminH = x;
-			}
-			if (abs(S) > maxS)
-			{
-			maxS = abs(S);
-			}
-			if (abs(u - vplus1) > maxSubUiVi)
-			{
-			maxSubUiVi = abs(u - vplus1);
-			xmaxSubUiVi = x;
-			}
-			if ((i < n) || (x <= b))
-			{
-			sub = b - x;
-			}
+				if (h > maxH)
+				{
+					maxH = h;
+					xmaxH = x;
+				}
+				if (h < minH)
+				{
+					minH = h;
+					xminH = x;
+				}
+				if (abs(S) > maxS)
+				{
+					maxS = abs(S);
+				}
+				if (abs(u - vplus1) > maxSubUiVi)
+				{
+					maxSubUiVi = abs(u - vplus1);
+					xmaxSubUiVi = x;
+				}
+				if ((i < n) || (x <= b))
+				{
+					sub = b - x;
+				}
 
-			dataGridView2->Rows->Add();
-			dataGridView2->Rows[i]->Cells[0]->Value = i;
-			dataGridView2->Rows[i]->Cells[1]->Value = x;
-			dataGridView2->Rows[i]->Cells[2]->Value = vplus1;
-			dataGridView2->Rows[i]->Cells[3]->Value = vcap;
-			dataGridView2->Rows[i]->Cells[4]->Value = vplus1 - vcap;
-			dataGridView2->Rows[i]->Cells[5]->Value = S;
-			dataGridView2->Rows[i]->Cells[6]->Value = h;
-			dataGridView2->Rows[i]->Cells[7]->Value = c1;
-			dataGridView2->Rows[i]->Cells[8]->Value = c2;
-			dataGridView2->Rows[i]->Cells[9]->Value = u;
-			dataGridView2->Rows[i]->Cells[10]->Value = abs(u - vplus1);
+				dataGridView2->Rows->Add();
+				dataGridView2->Rows[i]->Cells[0]->Value = i;
+				dataGridView2->Rows[i]->Cells[1]->Value = x;
+				dataGridView2->Rows[i]->Cells[2]->Value = vplus1;
+				dataGridView2->Rows[i]->Cells[3]->Value = vcap;
+				dataGridView2->Rows[i]->Cells[4]->Value = vplus1 - vcap;
+				dataGridView2->Rows[i]->Cells[5]->Value = S;
+				dataGridView2->Rows[i]->Cells[6]->Value = h;
+				dataGridView2->Rows[i]->Cells[7]->Value = c1;
+				dataGridView2->Rows[i]->Cells[8]->Value = c2;
+				dataGridView2->Rows[i]->Cells[9]->Value = u;
+				dataGridView2->Rows[i]->Cells[10]->Value = abs(u - vplus1);
 
-			v = Correction(vplus1, S);
+				v = Correction(vplus1, S);
+				f_list->Add(x, v);
 			}
 			//--------------------------------------------------------------------
 		}
@@ -1333,26 +1343,26 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			f_list->Add(x, vplus1);
 			if (h > maxH)
 			{
-			maxH = h;
-			xmaxH = x;
+				maxH = h;
+				xmaxH = x;
 			}
 			if (h < minH)
 			{
-			minH = h;
-			xminH = x;
+				minH = h;
+				xminH = x;
 			}
 			if (abs(S) > maxS)
 			{
-			maxS = abs(S);
+				maxS = abs(S);
 			}
 			if (abs(u - vplus1) > maxSubUiVi)
 			{
-			maxSubUiVi = abs(u - vplus1);
-			xmaxSubUiVi = x;
+				maxSubUiVi = abs(u - vplus1);
+				xmaxSubUiVi = x;
 			}
 			if ((i < n) || (x <= b))
 			{
-			sub = b - x;
+				sub = b - x;
 			}
 
 			dataGridView2->Rows->Add();
@@ -1388,8 +1398,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			{
 				x = xInc(x, h);
 
-				u = fAcc(I0, f, x);
-				f_list->Add(x, vplus1);
+				u = fAcc(I0, f, x);				
 				g_list->Add(x, u);
 
 				if (h > maxH)
@@ -1435,13 +1444,13 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 					c2++;
 				}
 				v = Correction(vplus1, S);
+				f_list->Add(x, v);
 			}
 			else
 			{
 				x = xInc(x, h);
 
-				u = fAcc(I0, f, x);
-				f_list->Add(x, vplus1);
+				u = fAcc(I0, f, x);				
 				g_list->Add(x, u);
 
 				if (h > maxH)
@@ -1482,6 +1491,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				dataGridView2->Rows[i]->Cells[10]->Value = abs(u - vplus1);
 
 				v = Correction(vplus1, S);
+				f_list->Add(x, v);
 			}
 			//--------------------------------------------------------------------
 		}
@@ -1562,6 +1572,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	ref += str;
 	ref += "\r\n";
 	textBox17->Text = gcnew String(ref.c_str());
+}
+private: System::Void tabPage1_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

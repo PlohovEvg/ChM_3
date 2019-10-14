@@ -3,7 +3,7 @@
 
 double f(double x, double u, DU d)
 {
-	return d.E0*sin(d.w*x) - d.R*u;
+	return (d.E0*sin(d.w*x) - d.R*u)/d.L;
 }
 
 double xInc(double x, double h)
