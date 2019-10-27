@@ -1594,6 +1594,12 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	sprintf_s(str, "%.4lf", xmaxSubUiVi);
 	ref += str;
 	ref += "\r\n";
+	ref += "\r\n";
+	ref += "I(x) - сила тока\r\n";
+	ref += "x - время\r\n";
+	ref += "E0sin(wx) - ЭДС\r\n";
+	ref += "R - сопротивление\r\n";
+	ref += "L - коэффициент самоиндукции\r\n";
 	textBox17->Text = gcnew String(ref.c_str());
 }
 private: System::Void tabPage1_Click(System::Object^  sender, System::EventArgs^  e) {
