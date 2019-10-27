@@ -161,6 +161,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  C1;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  C2;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  Ui;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
+private: System::Windows::Forms::Label^  label1;
 
 
 
@@ -185,6 +186,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button16 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label24 = (gcnew System::Windows::Forms::Label());
@@ -272,6 +274,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->label1);
 			this->tabPage1->Controls->Add(this->button16);
 			this->tabPage1->Controls->Add(this->button1);
 			this->tabPage1->Controls->Add(this->label24);
@@ -325,6 +328,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->tabPage1->UseVisualStyleBackColor = true;
 			this->tabPage1->Click += gcnew System::EventHandler(this, &MyForm::tabPage1_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(721, 3);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(134, 16);
+			this->label1->TabIndex = 75;
+			this->label1->Text = L"Параметры метода";
+			// 
 			// button16
 			// 
 			this->button16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -345,7 +359,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(160, 48);
 			this->button1->TabIndex = 73;
-			this->button1->Text = L"Добавить кривую";
+			this->button1->Text = L"Добавить решение";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -354,7 +368,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->label24->AutoSize = true;
 			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label24->Location = System::Drawing::Point(623, 58);
+			this->label24->Location = System::Drawing::Point(623, 72);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(313, 16);
 			this->label24->TabIndex = 72;
@@ -362,7 +376,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// 
 			// b_Text
 			// 
-			this->b_Text->Location = System::Drawing::Point(778, 77);
+			this->b_Text->Location = System::Drawing::Point(778, 91);
 			this->b_Text->Name = L"b_Text";
 			this->b_Text->Size = System::Drawing::Size(100, 20);
 			this->b_Text->TabIndex = 71;
@@ -373,18 +387,18 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->label22->AutoSize = true;
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label22->Location = System::Drawing::Point(627, 34);
+			this->label22->Location = System::Drawing::Point(660, 49);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(147, 16);
+			this->label22->Size = System::Drawing::Size(111, 16);
 			this->label22->TabIndex = 70;
-			this->label22->Text = L"Шаг интегрирования ";
+			this->label22->Text = L"Начальный шаг ";
 			// 
 			// label30
 			// 
 			this->label30->AutoSize = true;
 			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label30->Location = System::Drawing::Point(623, 100);
+			this->label30->Location = System::Drawing::Point(623, 114);
 			this->label30->Name = L"label30";
 			this->label30->Size = System::Drawing::Size(302, 16);
 			this->label30->TabIndex = 69;
@@ -398,7 +412,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->textBox17->Multiline = true;
 			this->textBox17->Name = L"textBox17";
 			this->textBox17->ReadOnly = true;
-			this->textBox17->Size = System::Drawing::Size(501, 334);
+			this->textBox17->Size = System::Drawing::Size(501, 358);
 			this->textBox17->TabIndex = 68;
 			this->textBox17->Text = L"\r\n\r\n\r\n\r\n\r\n\r\n";
 			// 
@@ -489,7 +503,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(160, 48);
 			this->button4->TabIndex = 65;
-			this->button4->Text = L"Старт";
+			this->button4->Text = L"Вычислить";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
@@ -498,7 +512,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			this->label23->AutoSize = true;
 			this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label23->Location = System::Drawing::Point(680, 5);
+			this->label23->Location = System::Drawing::Point(678, 24);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(93, 16);
 			this->label23->TabIndex = 63;
@@ -518,11 +532,12 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(26, -10);
+			this->pictureBox3->Location = System::Drawing::Point(26, 4);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(437, 98);
 			this->pictureBox3->TabIndex = 60;
 			this->pictureBox3->TabStop = false;
+			this->pictureBox3->Click += gcnew System::EventHandler(this, &MyForm::pictureBox3_Click);
 			// 
 			// label26
 			// 
@@ -586,7 +601,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// 
 			// Epsilon_Text
 			// 
-			this->Epsilon_Text->Location = System::Drawing::Point(780, 119);
+			this->Epsilon_Text->Location = System::Drawing::Point(780, 133);
 			this->Epsilon_Text->Name = L"Epsilon_Text";
 			this->Epsilon_Text->Size = System::Drawing::Size(100, 20);
 			this->Epsilon_Text->TabIndex = 53;
@@ -602,7 +617,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// 
 			// h_Text
 			// 
-			this->h_Text->Location = System::Drawing::Point(780, 35);
+			this->h_Text->Location = System::Drawing::Point(780, 49);
 			this->h_Text->Name = L"h_Text";
 			this->h_Text->Size = System::Drawing::Size(100, 20);
 			this->h_Text->TabIndex = 51;
@@ -610,7 +625,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  UiVi;
 			// 
 			// n_Text
 			// 
-			this->n_Text->Location = System::Drawing::Point(780, 4);
+			this->n_Text->Location = System::Drawing::Point(778, 23);
 			this->n_Text->Name = L"n_Text";
 			this->n_Text->Size = System::Drawing::Size(100, 20);
 			this->n_Text->TabIndex = 50;
@@ -1281,12 +1296,20 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	sprintf_s(str, "%.4lf", xmaxSubUiVi);
 	ref += str;
 	ref += "\r\n";
+	ref += "\r\n";
+	ref += "I(x) - сила тока\r\n";
+	ref += "x - время\r\n";
+	ref += "E0sin(wx) - ЭДС\r\n";
+	ref += "R - сопротивление\r\n";
+	ref += "L - коэффициент самоиндукции\r\n";
 	textBox17->Text = gcnew String(ref.c_str());
 }		
 private: System::Void button16_Click_1(System::Object^  sender, System::EventArgs^  e) 
 {
 	GraphPane^ panel = zedGraphControl2->GraphPane;
 	panel->CurveList->Clear();
+	dataGridView2->Rows->Clear();
+	textBox17->Text = "";
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 {	
@@ -1574,6 +1597,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	textBox17->Text = gcnew String(ref.c_str());
 }
 private: System::Void tabPage1_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void pictureBox3_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
